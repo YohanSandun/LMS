@@ -87,46 +87,76 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <title>Login - LMS</title>
 </head>
-<body class="text-center">
+<body>
+<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-sm-center h-100">
+				<div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+					<div class="text-center my-5">
+						<img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo" width="100">
+					</div>
+					<div class="card shadow-lg">
+						<div class="card-body p-5">
+							<h1 class="fs-4 card-title fw-bold mb-4 text-center">Login</h1>
+							<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="needs-validation" novalidate="" autocomplete="off">
 
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+                                <?php 
+                                    if(!empty($login_err)){
+                                        echo '<div class="alert alert-danger p-2">' . $login_err . '</div>';
+                                    }        
+                                ?>
 
-        <?php 
-        if(!empty($login_err)){
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }        
-        ?>
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="username">Username</label>
+									<input id="username" type="text" class="form-control" name="username" value="" required autofocus>
+									<div class="invalid-feedback">
+										Username is invalid
+									</div>
+								</div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-        </form>
-    </div>
+								<div class="mb-3">
+									<div class="mb-2 w-100">
+										<label class="text-muted" for="password">Password</label>
+									</div>
+									<input id="password" type="password" class="form-control" name="password" required>
+								    <div class="invalid-feedback">
+								    	Password is required
+							    	</div>
+								</div>
+
+								<div class="d-flex align-items-center pb-3">
+									<div class="form-check">
+										<input type="checkbox" name="remember" id="remember" class="form-check-input">
+										<label for="remember" class="form-check-label">Remember Me</label>
+									</div>
+									
+								</div>
+
+                                <div class="mb-3">
+                                <button type="submit" class="btn btn-primary w-100">
+										Login
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="text-center mt-5 text-muted">
+						Copyright &copy; 2017-2021 &mdash; YSK Soft
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="js/login.js"></script>
 </body>
-<script type="text/javascript" src="js/bootstrap.js"/>
 </html>
