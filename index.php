@@ -95,19 +95,19 @@ $uid = $_SESSION["id"];
 
         <?php
 
-          $sql = "SELECT courses.cname, courses.ccover, courses.ccode, enrolls.eprogress FROM enrolls INNER JOIN courses ON courses.cid = enrolls.ecourse WHERE enrolls.estudent='".$uid."' ORDER BY enrolls.edate DESC";
+          $sql = "SELECT courses.cid, courses.cname, courses.ccover, courses.ccode, enrolls.eprogress FROM enrolls INNER JOIN courses ON courses.cid = enrolls.ecourse WHERE enrolls.estudent='".$uid."' ORDER BY enrolls.edate DESC";
           $result = $link->query($sql);
 
           if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-              echo "<div class=\"course\">";
+              echo "<div class=\"course\"><a href=\"course.php?id=".$row["cid"]."\">";
               echo "<div class=\"course-cover\" style=\"background-image: url('images/covers/".$row["ccover"]."');\"></div>";
               echo '<div class="course-details"><div class="middle"><div class="progress"><div class="circle-wrap"><div class="circle">';
               $deg = $row["eprogress"]/100*180;
               echo '<div class="mask full" style="transform: rotate('.$deg.'deg);"><div class="fill" style="transform: rotate('.$deg.'deg);"></div>';
               echo '</div><div class="mask half"><div class="fill" style="transform: rotate('.$deg.'deg);"></div></div>';
               echo '<div class="inside-circle">'.$row["eprogress"].'%</div></div></div></div>';
-              echo '<div class="right"><h2>'.$row["cname"].'</h2><h3 class="text-muted">'.$row["ccode"].'</h3></div></div></div></div>';
+              echo '<div class="right"><h2>'.$row["cname"].'</h2><h3 class="text-muted">'.$row["ccode"].'</h3></div></div></div></a></div>';
             }
           } else {
             echo "0 results";
@@ -140,35 +140,40 @@ $uid = $_SESSION["id"];
             </div> 
           </div> 
         </div> 
-
-        <div class="course">
-          <div class="course-cover" style="background-image: url('images/test.jpg');"></div>
-          <div class="course-details">
-            <div class="middle">
-              <div class="progress">
-                <div class="circle-wrap">
-                  <div class="circle">
-                    <div class="mask full" style="transform: rotate(50deg);">
-                      <div class="fill" style="transform: rotate(50deg);"></div>
-                    </div>
-                    <div class="mask half">
-                      <div class="fill" style="transform: rotate(50deg);"></div>
-                    </div>
-                    <div class="inside-circle"> 75% </div>
-                  </div>
-                </div>
-              </div> 
-              <div class="right">
-                <h2>Software Engineering B4 2020</h2>
-                <h3 class="text-muted">ITC 1123</h3>
-              </div>
-            </div> 
-          </div> 
-        </div> 
         -->
-
+        
       </div> <!-- end courses -->
     </main>
+    <div class="right-panel">
+      <h1>Assessments</h1>
+        <div class="assessments">
+            
+            <div class="assessment">
+              <img src="images/assessment.png" alt="Assesment">
+              <div class="assesment-info">
+                <h2>Assignment 1</h2>
+                <h4 class="text-muted">Software Engineering</h4>
+              </div>
+            </div>
+
+            <div class="assessment">
+              <img src="images/assessment.png" alt="Assesment">
+              <div class="assesment-info">
+                <h2>Assignment 1</h2>
+                <h4 class="text-muted">Software Engineering</h4>
+              </div>
+            </div>
+
+            <div class="assessment">
+              <img src="images/assessment.png" alt="Assesment">
+              <div class="assesment-info">
+                <h2>Assignment 1</h2>
+                <h4 class="text-muted">Software Engineering</h4>
+              </div>
+            </div>
+
+        </div>
+    </div>
   </div>
   <script src="js/main.js"></script>
 </body>

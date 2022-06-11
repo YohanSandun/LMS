@@ -59,12 +59,16 @@ body {
     overflow-x: hidden;
 }
 
-.container {
+.container{
     display: grid;
     width: 96%;
     margin: 0 auto;
     gap: 1.8rem;
     grid-template-columns: 14rem auto 23rem;
+}
+
+.course-content {
+    grid-template-columns: 14rem auto;
 }
 
 a {
@@ -345,6 +349,47 @@ main .courses .mask .fill {
     background-color: var(--color-primary);
 }
 
+/*---------------------Sections--------------------------*/
+main .c-section > div {
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+    padding: var(--padding-1);
+}
+
+main .c-section .content {
+    display: grid;
+    grid-template-columns: 3rem auto 2rem;
+    border-bottom: 2px solid var(--color-light);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+main .c-section .content:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+main .c-section .content .title {
+    justify-content: center;
+}
+
+main .c-section h2 {
+    margin-bottom: 1rem;
+}
+
+main .c-section .content .completed span {
+    color: var(--color-primary);
+    font-size: 2rem;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+}
 
 /*---------------------Navigation------------------------*/
 nav {
@@ -429,11 +474,61 @@ nav .right .theme-toggler span.active {
     border-radius: var(--border-radius-1);
 }
 
+/*-----------------Right Panel----------------*/
+.right-panel {
+    margin-top: 4.2rem;
+}
+
+.right-panel .assessments {
+    margin-top: 1rem;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    padding: var(--padding-1);
+}
+
+.right-panel .assessments .assessment {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-light);
+    transition: all 300ms ease;
+}
+
+.right-panel .assessments .assessment:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.right-panel .assessments .assessment:hover {
+    margin-left: 0.5rem;
+}
+
+.right-panel .assessments .assessment img {
+    width: 3rem;
+    height: 3rem;
+}
+
+.right-panel .assessments .assessment .assesment-info {
+    margin-left: 1rem;
+}
+
+.right-panel .assessments .assessment .assesment-info h2 {
+    font-size: 1.1rem;
+}
+
 /*----------------- Tablets ------------------*/
 @media screen and (max-width: 1200px) {
     .container {
         width: 94%;
         grid-template-columns: 7rem auto 23rem;
+    }
+
+    .course-content {
+        grid-template-columns: 7rem auto;
     }
 
     aside .top {
