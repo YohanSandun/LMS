@@ -151,7 +151,7 @@ $uid = $_SESSION["id"];
             <div class="assessment">
               <img src="images/assessment.png" alt="Assesment">
               <div class="assesment-info">
-                <h2>Assignment 1</h2>
+                <h2>Assignment 1 </h2>
                 <h4 class="text-muted">Software Engineering</h4>
               </div>
             </div>
